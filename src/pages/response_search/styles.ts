@@ -124,6 +124,14 @@ width: 100%;
 padding-bottom: 50px;
 `;
 
+export const BoxQuestionCheck = styled.View`
+height: ${RFValue(80)}px;
+width: 100%;
+padding-bottom: 50px;
+flex-direction: row;
+align-items: center;
+`;
+
 export const InputResponse = styled.TextInput`
 flex: 1;
 `;

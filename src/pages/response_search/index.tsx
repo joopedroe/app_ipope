@@ -20,7 +20,7 @@ import {
     ButtonFooter,
     ButtonBack,
     ButtonNext,
-    ListOption,
+    BoxQuestionCheck,
     Icon,
     ButtonBackHeader,
     ScrollViewDisplay,
@@ -52,6 +52,10 @@ export function ResponseSearch({navigation}: any) {
     let [questions_data, setQuestion] = React.useState(questions);
     const [responseSearch, setResponseSearch] = React.useState({ });
     const [region, setRegion] = React.useState({});
+    let [text, setText] = React.useState('');
+    let [selectedText, setSelectedText] = React.useState(false);
+    let [selectedRadio, setSelectedRadio] = React.useState(false);
+    let [selectedQuestionId, setSelectedQuestionId] = React.useState('');
 
     useEffect(() => {
       getCurrentPosition();
@@ -66,7 +70,7 @@ export function ResponseSearch({navigation}: any) {
         const new_response = [...curret_responses, responseSearch];
         await AsyncStorage.setItem(dataKey, JSON.stringify(new_response));
         console.log( await AsyncStorage.getItem(dataKey));
-        navigation.navigate('Search')
+        navigation.push('Search')
       }
       catch(error){
         console.log(error);
@@ -76,7 +80,15 @@ export function ResponseSearch({navigation}: any) {
     }
 
     async function handleNext() {
-        if(question_index < pesquisaBase.length -1) {
+      if(selectedText){
+        selectCheckbox(true, text, selectedQuestionId);
+        setSelectedText(false);
+      }
+      if(selectedRadio){
+        setText('');
+        setSelectedRadio(false);
+      }
+        if(question_index < pesquisaBase.length) {
             console.log(question_index);
             setQuestion([pesquisaBase[question_index]]);
             await setQuestionIndex(question_index+1);
@@ -90,6 +102,14 @@ export function ResponseSearch({navigation}: any) {
         }
       }
     
+    async function selectedTextCheckbox(value: boolean, id: string) {
+      console.log("value");
+      await setSelectedText(value);
+      if(!value){
+        setText('')
+      }
+      setSelectedQuestionId(id);
+    }
     async function handleBack() {
         const response = await AsyncStorage.getItem(dataKey);
         console.log(response);
@@ -143,7 +163,46 @@ export function ResponseSearch({navigation}: any) {
         console.log(responseSearch);
       };
 
+      const selectRadioInput = (response : any, id_question: any) => {
+        if(typeof response === 'string'){
+          if(response === 'responseText'){
+            setSelectedRadio(true);
+          }
+          else{
+            setText('');
+            const responses = responseSearch;
+            responses[id_question] = response;
+            setResponseSearch(responses);
+            console.log(responseSearch);
+          }
+        }
+      };
+
+      const selectCheckbox = (response : any, item_name:any, id_question: any) => {
+        console.log(response);
+        const responses = responseSearch;
+        if (responses[id_question]) {
+          if(response){
+            responses[id_question] = [...responses[id_question], item_name];
+          }
+          else{
+            responses[id_question] = responses[id_question].filter(item => item !== item_name);
+          }
+        }
+        else{
+          responses[id_question] = [item_name];
+        }
+       
+        setResponseSearch(responses);
+        console.log(responseSearch);
+      };
+      const changeTextCheckbox = (response : any, id_question: any) => {
+        setText(response);
+      };
+
       const changeText = (response : any, id_question: any) => {
+        console.log(response);
+        setText(response);
         const responses = responseSearch;
         responses[id_question] = response;
         setResponseSearch(responses);
@@ -152,16 +211,17 @@ export function ResponseSearch({navigation}: any) {
     const CheckboxSearch = (question:Props) => {
         return ( 
             <OptionsContainer>
-              <ListOption
-                        data={question.campos}
-                        keyExtractor={item => item.id}
-                        renderItem={({item}) => (
-                                <Option>
-                                        <Checkbox value="one" size="md" my={2}>
-                                        <TextLabel>{item.title}</TextLabel>
-                                        </Checkbox>
-                                </Option>
-                        )}/>     
+             {question.campos.map(item => (
+                <Option key={item.id} >
+                    <Checkbox value={item.title} size="md" my={2} onChange={(value) =>selectCheckbox(value, item.title, question.id)}>
+                      <TextLabel>{item.title}</TextLabel>
+                    </Checkbox>
+              </Option>
+             ))}
+             <BoxQuestionCheck>
+                <Checkbox aria-label="Fechar" value={question.id} size="md" my={2} onChange={(value) => selectedTextCheckbox(value, question.id)}/>
+                <Input mx="3" size="xl" value={text} isDisabled={!selectedText} variant="underlined" placeholder="Resposta" w="100%" onChangeText={(text) => changeTextCheckbox(text, question.id)} />
+            </BoxQuestionCheck>  
             </OptionsContainer>
         );
       };
@@ -179,13 +239,15 @@ export function ResponseSearch({navigation}: any) {
       const InputTextRadioSearch = (question:Props) => {
         return ( 
             <OptionsContainer>
-              <BoxQuestion>
-                <Input mx="3" size="xl" variant="underlined" placeholder="Resposta" w="100%" onChangeText={(text) => changeText(text, question.id)} />
-            </BoxQuestion>
-            <Radio.Group name="myRadioGroup" accessibilityLabel="Pick your favorite number"  onChange={(value) =>selectRadio(value, question.id)}>
+            <Radio.Group name="myRadioGroup" accessibilityLabel="Pick your favorite number"  onChange={(value) =>selectRadioInput(value, question.id)}>
+            <BoxQuestionCheck>
+              <Radio accessibilityLabel="Pick your favorite number" value="responseText">
+              </Radio>
+                <Input mx="3" size="xl" value={text} isDisabled={!selectedRadio} variant="underlined" placeholder="Resposta" w="100%" onChangeText={(text) => changeText(text, question.id)} />
+            </BoxQuestionCheck>
               {question.campos.map(item => (
                 <Option key={item.id} >
-                  <Radio value={item.title}>
+                  <Radio  value={item.title}>
                     <TextLabel>{item.title}</TextLabel>
                   </Radio>
               </Option>
@@ -198,7 +260,7 @@ export function ResponseSearch({navigation}: any) {
       const RadioSearch = (question:Props) => {
         return ( 
             <OptionsContainer key={question.title}>
-              <Radio.Group name="myRadioGroup" accessibilityLabel="Pick your favorite number" onChange={(value) =>selectRadio(value, question.id)}>
+              <Radio.Group name="myRadioGroup" defaultValue={responseSearch[question.id]} accessibilityLabel="Pick your favorite number" onChange={(value) =>selectRadio(value, question.id)}>
               {question.campos.map(item => (
                 <Option key={item.id}>
                   <Radio value={item.title} >
@@ -227,7 +289,7 @@ export function ResponseSearch({navigation}: any) {
                     <IconHeader name="arrowleft"/>
               </ButtonBackHeader>
                 <HeaderTitle>
-                    Pesquisa X
+                    Questionário
                 </HeaderTitle>
             </Header>
               <ScrollViewDisplay >
@@ -245,9 +307,9 @@ export function ResponseSearch({navigation}: any) {
                 <Icon name="left"/>
                 <TextLabel>Voltar</TextLabel>
               </ButtonBack>
-              <ButtonNext onPress={handleNext}>
-                <TextLabel>Próximo</TextLabel>
-                <Icon name="right"/>
+              <ButtonNext disabled={true} onPress={handleNext}>
+                <TextLabel style={{opacity:false ? 1 : 0.5}}>Próximo</TextLabel>
+                <Icon style={{opacity:false ? 1 : 0.5}} name="right"/>
               </ButtonNext>
             </ButtonFooter>
         </Container>

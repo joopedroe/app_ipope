@@ -23,7 +23,7 @@ export const Footer = styled.View`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 19px;
+    margin: 15px 15px 0px 0px;
 `;
 export const Category = styled.View`
     flex-direction: row;
@@ -32,7 +32,7 @@ export const Category = styled.View`
 export const CategoryTitle = styled.Text`
     font-size: ${RFValue(14)}px;
     color: ${({theme}) => theme.colors.text};
-    margin-left: 17px;
+    margin-left: 1px;
 `;
 export const Date = styled.Text`
     font-size: ${RFValue(14)}px;

@@ -10,38 +10,10 @@ export function Home({ navigation }: any) {
     const data_search: SearchProps[] = [
         {
             id: '1',
-            subtitle: "Inteção de votos",
-            title: "Pesquisa em Lavandeira",
+            subtitle: "Avaliação política",
+            title: "Questionário de pesquisa semi-quantitativa de avaliação nas regiões sul e sudeste do estado do Tocantins nas eleições de 2022",
             category: "Em andamento",
-            date: "07/06/2022"
-        },
-        {
-            id: '2',
-            subtitle: "Inteção de votos",
-            title: "Pesquisa em Lavandeira",
-            category: "Em andamento",
-            date: "07/06/2022"
-        },
-        {
-            id:'3',
-            subtitle: "Inteção de votos",
-            title: "Pesquisa em Lavandeira",
-            category: "Em andamento",
-            date: "07/06/2022"
-        },
-        {
-            id: '4',
-            subtitle: "Inteção de votos",
-            title: "Pesquisa em Lavandeira",
-            category: "Em andamento",
-            date: "07/06/2022"
-        },
-        {
-            id: '5',
-            subtitle: "Inteção de votos",
-            title: "Pesquisa em Lavandeira",
-            category: "Em andamento",
-            date: "07/06/2022"
+            date: "07/08/2022"
         }
     ]
       

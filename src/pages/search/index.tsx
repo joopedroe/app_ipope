@@ -13,13 +13,18 @@ import {
 
   const data_search ={
         id: '1',
-        subtitle: "Inteção de votos",
-        title: "Pesquisa em Lavandeira",
+        subtitle: "Avaliação política",
+        title: "Questionário de pesquisa semi-quantitativa de avaliação nas regiões sul e sudeste do estado do Tocantins nas eleições de 2022",
         category: "Em andamento",
-        date: "07/06/2022"
+        date: "07/08/2022"
     }
 
 export function Search({ navigation }: any) {
+
+    useEffect(() => {
+        console.log("Search-----------");
+    } , []);
+
     return (
         <Container>
             <Header>
@@ -27,11 +32,11 @@ export function Search({ navigation }: any) {
                     <Icon name="arrowleft"/>
               </ButtonBack>
                 <HeaderTitle>
-                    Pesquisa X
+                    IPOPE Pesquisas
                 </HeaderTitle>
             </Header>
-            <SearchCardOpen data={data_search} cont={22}/>
-            <ButtonCard title="Responder" type="response" onPress={()=> navigation.navigate('ResponseSearch')} />
+            <SearchCardOpen data={data_search} />
+            <ButtonCard title="Responder" type="response" onPress={()=> navigation.push('ResponseSearch')} />
             <ButtonCard title="Finalizar" type="finish" />
         </Container>
     )

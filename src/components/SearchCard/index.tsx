@@ -24,8 +24,8 @@ export function SearchCard({data} : Props) {
     const navigation = useNavigation();
     return (
         <Container onPress={()=> navigation.navigate('Search')} >
-            <Title>{data.title}</Title>
             <Subtitle>{data.subtitle}</Subtitle>
+            <Title>{data.title}</Title>
             <Footer>
                 <Category>
                     <CategoryTitle>{data.category}</CategoryTitle>

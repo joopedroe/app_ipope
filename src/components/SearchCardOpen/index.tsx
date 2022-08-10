@@ -33,15 +33,15 @@ export function SearchCardOpen({data} : Props) {
     } , []);
     return (
         <Container>
-            <Title>{data.title}</Title>
             <Subtitle>{data.subtitle}</Subtitle>
+            <Title>{data.title}</Title>
             <Footer>
                 <Category>
                     <CategoryTitle>{data.category}</CategoryTitle>
                 </Category>
                 <Date>{data.date}</Date>
             </Footer>
-            <Subtitle>Quest. respostas: {cont}</Subtitle>
+            <Subtitle>Quant. de respostas: {cont}</Subtitle>
         </Container>
     );
 }
