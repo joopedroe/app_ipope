@@ -59,7 +59,7 @@ const pesquisa = [{
         },
         {
             id: '33',
-            title: "Espirita",
+            title: "Espírita",
             selected: false
         },
         {
@@ -91,7 +91,7 @@ const pesquisa = [{
         },
         {
             id: '43',
-            title: "Empreendedor / Autonomo",
+            title: "Empreendedor / Autônomo",
             selected: false
         },
         {
@@ -101,7 +101,7 @@ const pesquisa = [{
         },
         {
             id: '45',
-            title: "Dono (a) de Casa / Estudade", 
+            title: "Dono (a) de Casa / Estudande", 
             selected: false
         }
     ]
@@ -136,7 +136,7 @@ const pesquisa = [{
 
 const pesquisaBase = [{
     id: '6',
-    question: "Como você avalia a gestão do prefeito?",
+    question: "Como você avalia a gestão do prefeito ",
     type: 2,
     campos: [
         {
@@ -293,7 +293,7 @@ const pesquisaBase = [{
     campos: [
         {
             id: '111',
-            title: "Vanderly Barbosa",
+            title: "Vanderley Barbosa",
             selected: false
         },
         {
@@ -308,12 +308,12 @@ const pesquisaBase = [{
         },
         {
             id: '114',
-            title: "Osires Damasgo",
+            title: "Osires Damaso",
             selected: false
         },
         {
             id: '115',
-            title: "Iraja Abreu",
+            title: "Irajá Abreu",
             selected: false
         },
         {
@@ -351,12 +351,12 @@ const pesquisaBase = [{
         },
         {
             id: '124',
-            title: "Osires Damasgo",
+            title: "Osires Damaso",
             selected: false
         },
         {
             id: '125',
-            title: "Iraja Abreu",
+            title: "Irajá Abreu",
             selected: false
         },
         {
@@ -470,12 +470,12 @@ const pesquisaBase = [{
         },
         {
             id: '152',
-            title: "Wanderley Luxemburgo",
+            title: "Carlos Amastha",
             selected: false
         },
         {
             id: '153',
-            title: "Katia Abreu",
+            title: "Kátia Abreu",
             selected: false
         },
         {
@@ -513,12 +513,12 @@ const pesquisaBase = [{
         },
         {
             id: '162',
-            title: "Wanderley Luxemburgo",
+            title: "Carlos Amastha",
             selected: false
         },
         {
             id: '163',
-            title: "Katia Abreu",
+            title: "Kátia Abreu",
             selected: false
         },
         {
@@ -587,7 +587,7 @@ const pesquisaBase = [{
 },
 {
     id: '19',
-    question: "Quais as áreas você espera que o governo do Estado deve priorizar para seu municipio em parceria com a prefeitura?",
+    question: "Quais as áreas você espera que o governo do Estado deve priorizar para seu município em parceria com a prefeitura?",
     type: 1,
     campos: [
         {
@@ -597,7 +597,7 @@ const pesquisaBase = [{
         },
         {
             id: '192',
-            title: "Pav. Asfaltica",
+            title: "Pav. Asfáltica",
             selected: false
         },
         {

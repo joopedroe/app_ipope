@@ -1,7 +1,8 @@
 import styled from "styled-components/native";
-import { FlatList, FlatListProps } from "react-native";
-import { RFPercentage } from "react-native-responsive-fontsize";
+import { FlatList, FlatListProps, TouchableOpacity } from "react-native";
+import { RFValue, RFPercentage } from "react-native-responsive-fontsize";
 import { SearchProps} from ".";
+import {  AntDesign } from "@expo/vector-icons";
 
 export const Container = styled.View`
     flex:1;
@@ -10,7 +11,8 @@ export const Container = styled.View`
 
 export const Header = styled.View`
 width: 100%;
-height: ${RFPercentage(22)}px;
+margin-top: ${RFPercentage(4)}px;
+height: ${RFPercentage(20)}px;
 background-color: ${({theme}) => theme.colors.primary};
 justify-content: center;
 align-items: center;
@@ -46,4 +48,28 @@ align-items: center;
 `;
 
 export const ListSearchItemText = styled.Text`
+`;
+
+export const ButtonBack = styled(TouchableOpacity)`
+width: ${RFValue(200)}px;
+flex-direction: block;
+height: ${RFValue(60)}px;
+flex-direction: row;
+align-items: center;
+border: 0px solid ${({theme}) => theme.colors.text};
+border-radius: ${RFValue(6)}px;
+padding: 10px;
+justify-content: center;
+`;
+
+export const Icon = styled(AntDesign)`
+color: ${({theme}) => theme.colors.text};
+font-size: ${RFValue(24)}px;
+margin-right: ${RFValue(10)}px;
+`;
+
+export const TextLabel = styled.Text`
+color: ${({theme}) => theme.colors.text};
+font-family: ${({theme}) => theme.fonts.regular};
+font-size: ${RFValue(19)}px;
 `;

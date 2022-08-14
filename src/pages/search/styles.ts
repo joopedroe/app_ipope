@@ -43,3 +43,14 @@ font-size: ${RFValue(30)}px;
 color: ${({theme}) => theme.colors.text};
 margin-left: ${RFValue(10)}px;
 `;
+
+export const Subtitle  = styled.Text`
+font-size: ${RFValue(14)}px; ;
+font-family: ${({theme}) => theme.fonts.regular};
+`;
+
+export const Title = styled.Text`
+font-size: ${RFValue(20)}px;
+font-family: ${({theme}) => theme.fonts.regular};
+margin-top: 2px;
+`;

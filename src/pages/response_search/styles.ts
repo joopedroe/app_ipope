@@ -51,7 +51,13 @@ height: 70%;
 `;
 export const QuestionContainer = styled.View`
 background-color: ${({theme}) => theme.colors.background};
-padding: 0 24px;
+padding: 0 ${RFValue(10)}px;
+height: 55%;
+flex: 1;
+`;
+export const QuestionOptionsContainer = styled.View`
+background-color: ${({theme}) => theme.colors.background};
+padding: 0 ${RFValue(25)}px;
 height: 55%;
 flex: 1;
 `;

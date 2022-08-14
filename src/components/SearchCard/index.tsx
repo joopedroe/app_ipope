@@ -12,9 +12,9 @@ import {
  } from "./styles";
 
  export interface SearchCardProps {
-        title: string;
-        subtitle: string;
-        category: string;
+        name: string;
+        description: string;
+        city: string;
         date: string;
  }
  interface Props {
@@ -24,11 +24,12 @@ export function SearchCard({data} : Props) {
     const navigation = useNavigation();
     return (
         <Container onPress={()=> navigation.navigate('Search')} >
-            <Subtitle>{data.subtitle}</Subtitle>
-            <Title>{data.title}</Title>
+            <Subtitle>{data.name}</Subtitle>
+            <Title>{data.description}</Title>
+            <Title>Cidade: {data.city}</Title>
             <Footer>
                 <Category>
-                    <CategoryTitle>{data.category}</CategoryTitle>
+                    <CategoryTitle>Em andamento</CategoryTitle>
                 </Category>
                 <Date>{data.date}</Date>
 

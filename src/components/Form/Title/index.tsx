@@ -3,13 +3,14 @@ import { Container, Title } from "./styles";
 
 interface Props {
     title: string;
+    id: string;
 }
 
-export function TitleSearch({ title }: Props) {
+export function TitleSearch({ title, id }: Props) {
     return (
         <Container>
             <Title>
-                {title}
+                {`${id} - ${title}`}
             </Title>
         </Container>
     )

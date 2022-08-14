@@ -13,6 +13,7 @@ import {
     Header,
     HeaderTitle,
     QuestionContainer,
+    QuestionOptionsContainer,
     TextLabel,
     OptionsContainer,
     Option,
@@ -50,16 +51,29 @@ export function ResponseSearch({navigation}: any) {
     const questions: Props[] = pesquisa;
     let [question_index, setQuestionIndex] = React.useState(0);
     let [questions_data, setQuestion] = React.useState(questions);
-    const [responseSearch, setResponseSearch] = React.useState({ });
-    const [region, setRegion] = React.useState({});
+    const [responseSearch, setResponseSearch] = React.useState({});
+    let [contResponses, setContResponses] = React.useState({cont:0});
     let [text, setText] = React.useState('');
     let [selectedText, setSelectedText] = React.useState(false);
     let [selectedRadio, setSelectedRadio] = React.useState(false);
     let [selectedQuestionId, setSelectedQuestionId] = React.useState('');
+    let [buttonDisabled, setButtonDisabled] = React.useState(true);
+    const dataSearch = '@ResponseSearch:search';
+    let cont = questions_data.length;
 
     useEffect(() => {
-      getCurrentPosition();
-    }, []);
+      async function handleResponseApi(){
+          await AsyncStorage.getItem(dataSearch).then( (responses) => {
+              const response = responses ? JSON.parse(responses) : null;
+              if(response){
+                pesquisaBase[0].question = pesquisaBase[0].question + response.mayor +'?';
+              }
+          }).catch( (error) => {
+              console.log(error);
+          } );
+      }
+      handleResponseApi();
+  } , []);
 
     async function handleResponse(){
       try{
@@ -69,11 +83,10 @@ export function ResponseSearch({navigation}: any) {
 
         const new_response = [...curret_responses, responseSearch];
         await AsyncStorage.setItem(dataKey, JSON.stringify(new_response));
-        console.log( await AsyncStorage.getItem(dataKey));
+
         navigation.push('Search')
       }
       catch(error){
-        console.log(error);
         Alert.alert("Erro", "Erro ao responder pesquisa");
         navigation.navigate('Search')
       }
@@ -89,9 +102,15 @@ export function ResponseSearch({navigation}: any) {
         setSelectedRadio(false);
       }
         if(question_index < pesquisaBase.length) {
-            console.log(question_index);
             setQuestion([pesquisaBase[question_index]]);
-            await setQuestionIndex(question_index+1);
+            if(responseSearch[pesquisaBase[question_index].id]){
+              setButtonDisabled(false);
+            }
+            else{
+              setButtonDisabled(true);
+            }
+            cont = questions_data.length
+            await setQuestionIndex(question_index + 1);
         }
         else{
           setQuestion([{
@@ -103,22 +122,34 @@ export function ResponseSearch({navigation}: any) {
       }
     
     async function selectedTextCheckbox(value: boolean, id: string) {
-      console.log("value");
       await setSelectedText(value);
       if(!value){
         setText('')
       }
       setSelectedQuestionId(id);
+      alterStatus();
     }
     async function handleBack() {
-        const response = await AsyncStorage.getItem(dataKey);
-        console.log(response);
         if(question_index > 0) {
-          setQuestion([pesquisaBase[question_index-1]]);
           setQuestionIndex(question_index-1);
+          let cont_index = question_index - 1;
+          if(cont_index === 0) {
+            setQuestion(questions);
+          }
+          else{
+            await setQuestion([pesquisaBase[cont_index-1]]);
+          }
         }
         else{
           setQuestion(questions);
+        }
+        setButtonDisabled(false);
+      }
+
+      async function alterStatus() {
+        cont = cont - 1;
+        if(cont === 0){
+          setButtonDisabled(false);
         }
       }
 
@@ -155,16 +186,21 @@ export function ResponseSearch({navigation}: any) {
         }
       };
 
-      const selectRadio = (response : any, id_question: any) => {
-        console.log(response);
+      async function  selectRadio(response : any, id_question: any){
         const responses = responseSearch;
+        if(!responses[id_question]){
+          alterStatus();
+        }
         responses[id_question] = response;
         setResponseSearch(responses);
-        console.log(responseSearch);
       };
 
       const selectRadioInput = (response : any, id_question: any) => {
+        const responses = responseSearch;
         if(typeof response === 'string'){
+          if(!responses[id_question]){
+            alterStatus();
+          }
           if(response === 'responseText'){
             setSelectedRadio(true);
           }
@@ -173,14 +209,13 @@ export function ResponseSearch({navigation}: any) {
             const responses = responseSearch;
             responses[id_question] = response;
             setResponseSearch(responses);
-            console.log(responseSearch);
           }
         }
       };
 
       const selectCheckbox = (response : any, item_name:any, id_question: any) => {
-        console.log(response);
         const responses = responseSearch;
+        alterStatus();
         if (responses[id_question]) {
           if(response){
             responses[id_question] = [...responses[id_question], item_name];
@@ -194,14 +229,14 @@ export function ResponseSearch({navigation}: any) {
         }
        
         setResponseSearch(responses);
-        console.log(responseSearch);
+
       };
       const changeTextCheckbox = (response : any, id_question: any) => {
         setText(response);
       };
 
       const changeText = (response : any, id_question: any) => {
-        console.log(response);
+
         setText(response);
         const responses = responseSearch;
         responses[id_question] = response;
@@ -239,7 +274,7 @@ export function ResponseSearch({navigation}: any) {
       const InputTextRadioSearch = (question:Props) => {
         return ( 
             <OptionsContainer>
-            <Radio.Group name="myRadioGroup" accessibilityLabel="Pick your favorite number"  onChange={(value) =>selectRadioInput(value, question.id)}>
+            <Radio.Group name="myRadioGroup" defaultValue={responseSearch[question.id]} accessibilityLabel="Pick your favorite number"  onChange={(value) =>selectRadioInput(value, question.id)}>
             <BoxQuestionCheck>
               <Radio accessibilityLabel="Pick your favorite number" value="responseText">
               </Radio>
@@ -295,10 +330,10 @@ export function ResponseSearch({navigation}: any) {
               <ScrollViewDisplay >
             {questions_data.map(question => (
                 <QuestionContainer key={question.id}>
-                        <TitleSearch title={question.question} />
-                        <QuestionContainer>
+                        <TitleSearch id={question.id} title={question.question} />
+                        <QuestionOptionsContainer>
                             {renderQuestion(question)}
-                        </QuestionContainer>
+                        </QuestionOptionsContainer>
                 </QuestionContainer>
                       ))}
             </ScrollViewDisplay>
@@ -307,9 +342,9 @@ export function ResponseSearch({navigation}: any) {
                 <Icon name="left"/>
                 <TextLabel>Voltar</TextLabel>
               </ButtonBack>
-              <ButtonNext disabled={true} onPress={handleNext}>
-                <TextLabel style={{opacity:false ? 1 : 0.5}}>Próximo</TextLabel>
-                <Icon style={{opacity:false ? 1 : 0.5}} name="right"/>
+              <ButtonNext disabled={buttonDisabled} onPress={handleNext}>
+                <TextLabel style={{opacity:buttonDisabled?  0.5 : 1}}>Próximo</TextLabel>
+                <Icon style={{opacity:buttonDisabled ?  0.5 : 1}} name="right"/>
               </ButtonNext>
             </ButtonFooter>
         </Container>
