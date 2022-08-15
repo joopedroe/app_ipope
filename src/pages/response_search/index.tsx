@@ -59,14 +59,16 @@ export function ResponseSearch({navigation}: any) {
     let [selectedQuestionId, setSelectedQuestionId] = React.useState('');
     let [buttonDisabled, setButtonDisabled] = React.useState(true);
     const dataSearch = '@ResponseSearch:search';
+    const search = pesquisaBase;
     let cont = questions_data.length;
 
     useEffect(() => {
       async function handleResponseApi(){
           await AsyncStorage.getItem(dataSearch).then( (responses) => {
               const response = responses ? JSON.parse(responses) : null;
-              if(response){
-                pesquisaBase[0].question = pesquisaBase[0].question + response.mayor +'?';
+              if(response && !search[0].mayor){
+                search[0].question = search[0].question + response.mayor +'?';
+                search[0].mayor = true;
               }
           }).catch( (error) => {
               console.log(error);
@@ -101,9 +103,9 @@ export function ResponseSearch({navigation}: any) {
         setText('');
         setSelectedRadio(false);
       }
-        if(question_index < pesquisaBase.length) {
-            setQuestion([pesquisaBase[question_index]]);
-            if(responseSearch[pesquisaBase[question_index].id]){
+        if(question_index < search.length) {
+            setQuestion([search[question_index]]);
+            if(responseSearch[search[question_index].id]){
               setButtonDisabled(false);
             }
             else{
@@ -137,7 +139,7 @@ export function ResponseSearch({navigation}: any) {
             setQuestion(questions);
           }
           else{
-            await setQuestion([pesquisaBase[cont_index-1]]);
+            await setQuestion([search[cont_index-1]]);
           }
         }
         else{

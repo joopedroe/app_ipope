@@ -137,6 +137,7 @@ const pesquisa = [{
 const pesquisaBase = [{
     id: '6',
     question: "Como você avalia a gestão do prefeito ",
+    mayor: false,
     type: 2,
     campos: [
         {
