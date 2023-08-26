@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from "styled-components";
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 
 import {
 useFonts,
@@ -17,6 +17,8 @@ import { NativeBaseProvider } from "native-base";
 import { NavigationContainer } from '@react-navigation/native';
 import { AppRoutes } from './src/routes/routes';
 
+
+SplashScreen.preventAutoHideAsync()
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -25,7 +27,8 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    SplashScreen.hideAsync();
+    return null;
   }
 
   return (

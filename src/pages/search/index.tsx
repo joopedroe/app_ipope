@@ -19,13 +19,6 @@ import {
     Subtitle
   } from "./styles";
 
-  const data_search ={
-        id: '1',
-        subtitle: "Avaliação política",
-        title: "Questionário de pesquisa semi-quantitativa de avaliação nas regiões sul e sudeste do estado do Tocantins nas eleições de 2022",
-        category: "Em andamento",
-        date: "07/08/2022"
-    }
 
 export function Search({ navigation }: any) {
     const [showModal, setShowModal] = useState(false);
@@ -77,13 +70,20 @@ export function Search({ navigation }: any) {
             if(responsesQuest.length = 0){
                 Alert.alert('Oops!', 'Sem respostas!');
             }
-            if(!responseSearch.code){
+            if(!responseSearch["code"]){
                 Alert.alert('Oops!', 'Sem pesquisas cadastradas!');
             }
             handleResponse().then(data => {
-                if(responseSearch.code && data.length > 0){
-                    const code = responseSearch.id;
-                    SearchPresenter.postResponses(code, {user_name: user_name, data:data}).then(res => {
+                const params = {
+                    "username": user_name,
+                    "data": data,
+                }
+                AsyncStorage.removeItem(dataKey);
+                AsyncStorage.removeItem(dataSearch);
+                Alert.alert('Sucesso!', 'Pesquisa enviada com sucesso!');
+                if(responseSearch["code"]&& data.length > 0){
+                    const code = responseSearch["id"];
+                    SearchPresenter.postResponses(code, params).then(res => {
                         if(!res){
                             Alert.alert('Oops!', 'Não foi possível enviar a pesquisa, verifique a internet e tente novamente!');
                         }

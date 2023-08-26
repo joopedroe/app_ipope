@@ -41,8 +41,15 @@ font-family: ${({theme}) => theme.fonts.regular};
 color: ${({theme}) => theme.colors.text};
 font-size: ${RFValue(22)}px;
 margin-left: ${RFValue(10)}px;
-
 `;
+
+export const HeaderSubitle = styled.Text`
+font-family: ${({theme}) => theme.fonts.regular};
+color: ${({theme}) => theme.colors.text};
+font-size: ${RFValue(16)}px;
+margin-left: ${RFValue(10)}px;
+`;
+
 
 export const OptionsContainer = styled.View`
 background-color: ${({theme}) => theme.colors.background};
