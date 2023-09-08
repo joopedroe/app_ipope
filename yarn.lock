@@ -1215,16 +1215,16 @@
     "mv" "~2"
     "safe-json-stringify" "~1"
 
-"@expo/cli@0.10.9":
-  "integrity" "sha512-aK/2ZPC01rD7H4zDiM+GQHorjrOhgo0I+6AGht7RUL3M022TnarlLVc6KJDhVCMeXLaPuerJrsEJm5Hvgl1mNw=="
-  "resolved" "https://registry.npmjs.org/@expo/cli/-/cli-0.10.9.tgz"
-  "version" "0.10.9"
+"@expo/cli@0.10.11":
+  "integrity" "sha512-ehaAOw4SwkJ9uL5z9c3RD4LJpmMDCXZBCWZG4fonUGutks4t/GLoNRcdENkWsf6NSgkdPNgNl8KwphU1p083PQ=="
+  "resolved" "https://registry.npmjs.org/@expo/cli/-/cli-0.10.11.tgz"
+  "version" "0.10.11"
   dependencies:
     "@babel/runtime" "^7.20.0"
     "@expo/code-signing-certificates" "0.0.5"
     "@expo/config" "~8.1.0"
     "@expo/config-plugins" "~7.2.0"
-    "@expo/dev-server" "0.5.4"
+    "@expo/dev-server" "0.5.5"
     "@expo/devcert" "^1.0.0"
     "@expo/env" "0.0.5"
     "@expo/json-file" "^8.2.37"
@@ -1409,10 +1409,10 @@
     "xcode" "^3.0.0"
     "xml-js" "^1.6.11"
 
-"@expo/dev-server@0.5.4":
-  "integrity" "sha512-+4CxCWq+lLIiOtO6r1CErU9U4irepBJbXUMzeQ3Vik9FEkuhMwSHHHAxxOB+VmD5IuomubUY3RVMUzEWABIouw=="
-  "resolved" "https://registry.npmjs.org/@expo/dev-server/-/dev-server-0.5.4.tgz"
-  "version" "0.5.4"
+"@expo/dev-server@0.5.5":
+  "integrity" "sha512-t0fT8xH1exwYsH5hh7bAt85VF+gXxg24qrbny2rR/iKoPTWFCd2JNQV8pvfLg51hvrywQ3YCBuT3lU1w7aZxFA=="
+  "resolved" "https://registry.npmjs.org/@expo/dev-server/-/dev-server-0.5.5.tgz"
+  "version" "0.5.5"
   dependencies:
     "@expo/bunyan" "4.0.0"
     "@expo/metro-config" "~0.10.0"
@@ -3359,7 +3359,7 @@
   dependencies:
     "@babel/plugin-syntax-flow" "^7.12.1"
 
-"babel-preset-expo@~9.5.0":
+"babel-preset-expo@~9.5.2":
   "integrity" "sha512-hU1G1TDiikuXV6UDZjPnX+WdbjbtidDiYhftMEVrZQSst45pDPVBWbM41TUKrpJMwv4FypsLzK+378gnMPRVWQ=="
   "resolved" "https://registry.npmjs.org/babel-preset-expo/-/babel-preset-expo-9.5.2.tgz"
   "version" "9.5.2"
@@ -4390,17 +4390,10 @@
   "resolved" "https://registry.npmjs.org/expo-eas-client/-/expo-eas-client-0.6.0.tgz"
   "version" "0.6.0"
 
-"expo-file-system@~15.4.0":
-  "integrity" "sha512-HaaCBTUATs2+i7T4jxIvoU9rViAHMvOD2eBaJ1H7xPHlwZlMORjQs7bsNKonR/TQoduxZBJLVZGawvaAJNCH8g=="
-  "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-15.4.3.tgz"
-  "version" "15.4.3"
-  dependencies:
-    "uuid" "^3.4.0"
-
-"expo-file-system@~15.4.2":
-  "integrity" "sha512-HaaCBTUATs2+i7T4jxIvoU9rViAHMvOD2eBaJ1H7xPHlwZlMORjQs7bsNKonR/TQoduxZBJLVZGawvaAJNCH8g=="
-  "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-15.4.3.tgz"
-  "version" "15.4.3"
+"expo-file-system@~15.4.0", "expo-file-system@~15.4.4":
+  "integrity" "sha512-F0xS88D85F7qVQ61r0qBnzh6VW/s6iIl+VaQEEi2nAIOQHw1JIEj4yCXPLTtbyn5VmArbe2dSL3KYz1V+BLkKA=="
+  "resolved" "https://registry.npmjs.org/expo-file-system/-/expo-file-system-15.4.4.tgz"
+  "version" "15.4.4"
   dependencies:
     "uuid" "^3.4.0"
 
@@ -4433,10 +4426,10 @@
   dependencies:
     "expo-json-utils" "~0.7.0"
 
-"expo-modules-autolinking@>=0.8.1", "expo-modules-autolinking@1.5.0":
-  "integrity" "sha512-i9zll5xNYh0/sjaa6hpZlTHodKEu2tMEFsJJYsfBMTt8G9J8gGhalOydrX/Ql1E8bQ4GxnLAqrM7duR0Tj2VTQ=="
-  "resolved" "https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-1.5.0.tgz"
-  "version" "1.5.0"
+"expo-modules-autolinking@>=0.8.1", "expo-modules-autolinking@1.5.1":
+  "integrity" "sha512-yt5a1VCp2BF9CrsO689PCD5oXKP14MMhnOanQMvDn4BDpURYfzAlDVGC5fZrNQKtwn/eq3bcrxIwZ7D9QjVVRg=="
+  "resolved" "https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-1.5.1.tgz"
+  "version" "1.5.1"
   dependencies:
     "@expo/config" "~8.1.0"
     "chalk" "^4.1.0"
@@ -4445,10 +4438,10 @@
     "find-up" "^5.0.0"
     "fs-extra" "^9.1.0"
 
-"expo-modules-core@1.5.4":
-  "integrity" "sha512-/oID+SnVYUakb1De3FoT/gBPosPjY+docyHc+M8ZoPsA3LOdlCOkrQG9yw2lWEP2wDNVN6SAa/wcyNeLSIbdAw=="
-  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-1.5.4.tgz"
-  "version" "1.5.4"
+"expo-modules-core@1.5.11":
+  "integrity" "sha512-1Dj2t74nVjxq6xEQf2b9WFfAMhPzVnR0thY0PfRFgob4STyj3sq1U4PIHVWvKQBtDKIa227DrNRb+Hu+LqKWQg=="
+  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-1.5.11.tgz"
+  "version" "1.5.11"
   dependencies:
     "compare-versions" "^3.4.0"
     "invariant" "^2.2.4"
@@ -4500,25 +4493,25 @@
     "fbemitter" "^3.0.0"
     "resolve-from" "^5.0.0"
 
-"expo@*", "expo@^49.0.0":
-  "integrity" "sha512-6Z0niKnAx0/amM0MDA8ekYwjDnhgRA0gCYwMnN9v0z0zH1ObBxWio8MzRgFyki3dCxktS8Z6WzuYLfnIkTY22w=="
-  "resolved" "https://registry.npmjs.org/expo/-/expo-49.0.0.tgz"
-  "version" "49.0.0"
+"expo@*", "expo@^49.0.6":
+  "integrity" "sha512-x68r9sJ3HP5AedtGFZ5ufEYLWWrbWN9LN/jKavFMe22vRRyTGDMyIhKcoLCikqRDpYHFtIEuLh1P8H85Oz800Q=="
+  "resolved" "https://registry.npmjs.org/expo/-/expo-49.0.9.tgz"
+  "version" "49.0.9"
   dependencies:
     "@babel/runtime" "^7.20.0"
-    "@expo/cli" "0.10.9"
+    "@expo/cli" "0.10.11"
     "@expo/config" "8.1.2"
     "@expo/config-plugins" "7.2.5"
     "@expo/vector-icons" "^13.0.0"
-    "babel-preset-expo" "~9.5.0"
+    "babel-preset-expo" "~9.5.2"
     "expo-application" "~5.3.0"
     "expo-asset" "~8.10.1"
     "expo-constants" "~14.4.2"
-    "expo-file-system" "~15.4.2"
+    "expo-file-system" "~15.4.4"
     "expo-font" "~11.4.0"
     "expo-keep-awake" "~12.3.0"
-    "expo-modules-autolinking" "1.5.0"
-    "expo-modules-core" "1.5.4"
+    "expo-modules-autolinking" "1.5.1"
+    "expo-modules-core" "1.5.11"
     "fbemitter" "^3.0.0"
     "invariant" "^2.2.4"
     "md5-file" "^3.2.3"
@@ -5210,7 +5203,7 @@
   "version" "2.1.0"
 
 "is-stream@^1.1.0":
-  "integrity" "sha1-EtSj3U5o4Lec6428hBc66A2RykQ="
+  "integrity" "sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ=="
   "resolved" "https://registry.npmjs.org/is-stream/-/is-stream-1.1.0.tgz"
   "version" "1.1.0"
 
@@ -6386,7 +6379,7 @@
     "validate-npm-package-name" "^3.0.0"
 
 "npm-run-path@^2.0.0":
-  "integrity" "sha1-NakjLfo11wZ7TLLd8jV7GHFTbF8="
+  "integrity" "sha512-lJxZYlT4DW/bRUtFh1MQIWqmLwQfAxnqWG4HhEdjMlkrJYnJn0Jrr2u3mgxqaWsdiBc76TYkTG/mhrnYTuzfHw=="
   "resolved" "https://registry.npmjs.org/npm-run-path/-/npm-run-path-2.0.2.tgz"
   "version" "2.0.2"
   dependencies:
@@ -6529,7 +6522,7 @@
   "version" "1.0.2"
 
 "os-tmpdir@^1.0.0", "os-tmpdir@~1.0.2":
-  "integrity" "sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ="
+  "integrity" "sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g=="
   "resolved" "https://registry.npmjs.org/os-tmpdir/-/os-tmpdir-1.0.2.tgz"
   "version" "1.0.2"
 
@@ -6542,7 +6535,7 @@
     "os-tmpdir" "^1.0.0"
 
 "p-finally@^1.0.0":
-  "integrity" "sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4="
+  "integrity" "sha512-LICb2p9CB7FS+0eR1oqWnHhp0FljGLZCWBE9aix0Uye9W8LTQPwMTYVGWQWIw9RdQiDg4+epXQODwIYJtSJaow=="
   "resolved" "https://registry.npmjs.org/p-finally/-/p-finally-1.0.0.tgz"
   "version" "1.0.0"
 
@@ -7619,7 +7612,7 @@
     "ansi-regex" "^5.0.1"
 
 "strip-eof@^1.0.0":
-  "integrity" "sha1-u0P/VZim6wXYm1n80SnJgzE2Br8="
+  "integrity" "sha512-7FCwGGmx8mD5xQd3RPUvnSpUXHM3BWuzjtpD4TXsfcZ9EL4azvVVUscFYwD9nx8Kh+uCBC00XBtAykoMHwTh8Q=="
   "resolved" "https://registry.npmjs.org/strip-eof/-/strip-eof-1.0.0.tgz"
   "version" "1.0.0"
 
@@ -7733,9 +7726,9 @@
   "version" "1.0.0"
 
 "tar@^6.0.2", "tar@^6.0.5":
-  "integrity" "sha512-/zKt9UyngnxIT/EAGYuxaMYgOIJiP81ab9ZfkILq4oNLPFX50qyYmu7jRj9qeXoxmJHjGlbH0+cm2uy1WCs10A=="
-  "resolved" "https://registry.npmjs.org/tar/-/tar-6.1.15.tgz"
-  "version" "6.1.15"
+  "integrity" "sha512-/Wo7DcT0u5HUV486xg675HtjNd3BXZ6xDbzsCUZPt5iw8bTQ63bP0Raut3mvro9u+CUyq7YQd8Cx55fsZXxqLQ=="
+  "resolved" "https://registry.npmjs.org/tar/-/tar-6.2.0.tgz"
+  "version" "6.2.0"
   dependencies:
     "chownr" "^2.0.0"
     "fs-minipass" "^2.0.0"
@@ -8201,9 +8194,9 @@
   "version" "7.5.9"
 
 "ws@^8.12.1":
-  "integrity" "sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA=="
-  "resolved" "https://registry.npmjs.org/ws/-/ws-8.13.0.tgz"
-  "version" "8.13.0"
+  "integrity" "sha512-WR0RJE9Ehsio6U4TuM+LmunEsjQ5ncHlw4sn9ihD6RoJKZrVyH9FWV3dmnwu8B2aNib1OvG2X6adUCyFpQyWcg=="
+  "resolved" "https://registry.npmjs.org/ws/-/ws-8.14.0.tgz"
+  "version" "8.14.0"
 
 "xcode@^3.0.0", "xcode@^3.0.1":
   "integrity" "sha512-kCz5k7J7XbJtjABOvkc5lJmkiDh8VhjVCGNiqdKCscmVpdVUpEAyXv1xmCLkQJ5dsHqx3IPO4XW+NTDhU/fatA=="
