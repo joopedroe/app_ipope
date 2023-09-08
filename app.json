@@ -8,6 +8,11 @@
     ],
     "android": {
       "package": "ipope.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ab2a8df3-3169-4d19-a906-2215defadc2c"
+      }
     }
   }
 }
