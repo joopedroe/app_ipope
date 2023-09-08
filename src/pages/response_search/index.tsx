@@ -5,7 +5,7 @@ import {Checkbox, Radio, Box, Input, View} from "native-base";
 import {pesquisa, pesquisaBase} from "../../const/PesquisaBase";
 import {ScrollView, Alert} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-//import * as Location from "expo-location";
+import * as Location from "expo-location";
 import {ButtonCard} from "../../components/Form/ButtonCard";
 
 import {
@@ -199,18 +199,18 @@ export function ResponseSearch({navigation}: any) {
     }
 
     const getCurrentPosition = async () => {
-        //let {status} = await Location.requestForegroundPermissionsAsync();
+        let {status} = await Location.requestForegroundPermissionsAsync();
 
-        //if (status !== "granted") {
-            //Alert.alert("Ops!", "Permissão de acesso a localização negada.");
-        //}
+        if (status !== "granted") {
+            Alert.alert("Ops!", "Permissão de acesso a localização negada.");
+        }
 
-        //let {
-        //    coords: {latitude, longitude},
-        //} = await Location.getCurrentPositionAsync();
+        let {
+            coords: {latitude, longitude},
+        } = await Location.getCurrentPositionAsync();
 
         const responses = responseSearch;
-        responses["location"] = {lat: 'latitude', lng: 'longitude'};
+        responses["location"] = {lat: latitude, lng: longitude};
         setResponseSearch(responses);
     };
 

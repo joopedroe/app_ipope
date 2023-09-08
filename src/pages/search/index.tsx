@@ -78,21 +78,18 @@ export function Search({ navigation }: any) {
                     "username": user_name,
                     "data": data,
                 }
-                AsyncStorage.removeItem(dataKey);
-                AsyncStorage.removeItem(dataSearch);
-                Alert.alert('Sucesso!', 'Pesquisa enviada com sucesso!');
                 if(responseSearch["code"]&& data.length > 0){
                     const code = responseSearch["id"];
                     SearchPresenter.postResponses(code, params).then(res => {
-                        if(!res){
-                            Alert.alert('Oops!', 'Não foi possível enviar a pesquisa, verifique a internet e tente novamente!');
-                        }
-                        else{
-                            AsyncStorage.removeItem(dataKey);
-                            AsyncStorage.removeItem(dataSearch);
-                            Alert.alert('Sucesso!', 'Pesquisa enviada com sucesso!');
-                            navigation.push('Home')
-                        }
+                        //if(!res){
+                        //    Alert.alert('Oops!', 'Não foi possível enviar a pesquisa, verifique a internet e tente novamente!');
+                        //}
+                        //else{
+                        AsyncStorage.removeItem(dataKey);
+                        AsyncStorage.removeItem(dataSearch);
+                        Alert.alert('Sucesso!', 'Pesquisa enviada com sucesso!');
+                        navigation.push('Home')
+                        //}
                     }).catch(err => {
                         Alert.alert('Oops!', 'Não foi possível buscar a pesquisa, verifique o código e tente novamente!2');
                     }).finally(() => {
